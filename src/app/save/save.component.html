@@ -1,0 +1,116 @@
+<div class="row d-flex justify-content-around p-3">
+
+    <div class="card">
+        <h4 class="mb-4 text-center card-header">Event Information</h4>
+        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="needs-validation px-4 " novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label for="firstName">Name OF Event</label>
+                    <input type="text" class="form-control" id="firstName" formControlName="name" placeholder=""
+                        value="" required>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label for="inputGroupSelect01">Type of Event</label>
+                    <select class="custom-select" id="inputGroupSelect01" formControlName="type">
+                        <option selected>Choose...</option>
+                        <option value="Music">Music</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Theme">Theme</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6  mb-2">
+                    <label for="username">Date</label>
+
+                    <input type="date" class="form-control" id="username" formControlName="date" placeholder="Date"
+                        required>
+                    <div class="invalid-feedback" style="width: 100%;">
+                        Your username is required.
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-2">
+                    <label for="email">Time </label>
+                    <input type="time" class="form-control" id="email" formControlName="time"
+                        placeholder="you@example.com">
+                    <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mb-2">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" formControlName="venue" placeholder="1234 Main St"
+                    required>
+                <div class="invalid-feedback">
+                    Please enter your shipping address.
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label for="address2">Link <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2" formControlName="link" placeholder="location">
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 mb-2">
+                    <label for="country">No. of People Allowed</label>
+                    <input type="number" class="form-control" id="address2" formControlName="numOfPersons"
+                        placeholder="">
+
+                    <div class="invalid-feedback">
+                        Please select a valid country.
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-2">
+
+                    <label for="">Additional Comments</label>
+                    <textarea class="form-control" formControlName="instructions" id="" rows="3"></textarea>
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary mb-2 px-5 py-2 mx-auto badge badge-pill" type="submit">Save</button>
+        </form>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="row"><button (click)="getAllList('true')">Export</button></div>
+        <div id="accordion">
+            <div class="card" *ngFor="let item of eventsList;index as i;trackBy:trackByFn">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse"  [attr.data-target]="'#collpaseOne'+i"
+                            aria-expanded="true" aria-controls="{{i}}">
+                            {{item.name}}
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne{{i}}" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordion">
+                    <div class="card-body">
+
+                        <p><b>Venue: </b><i>{{item.venue}}</i></p>
+                        <p><b>Date: </b><i>{{item.date}}</i></p>
+                        <p><b>Time: </b><i>{{item.time}}</i></p>
+                        <p><b>Instructions: </b><i>{{item.instructions}}</i></p>
+                        <p><b>Number of Persons: </b><i>{{item.numOfPersons}}</i></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

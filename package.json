@@ -19,7 +19,11 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
-    "rxjs": "~6.6.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22",
+    "rxjs": "^6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
